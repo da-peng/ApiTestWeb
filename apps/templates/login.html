@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QA测试平台</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <!--Bootstrap专用图标字体-->
+    <link href="{{url_for('static',filename = 'plugins/font-awesome/css/font-awesome.min.css')}}" rel = 'stylesheet' type="text/css"/>
+    <!--收集众多网站的Logo-->
+    <link href="{{url_for('static',filename = 'plugins/simple-line-icons/simple-line-icons.min.css')}}" rel = 'stylesheet' type="text/css"/>
+    <!--共用的css-->
+    <link href="{{url_for('static',filename = 'global/css/bootstrap.min.css')}}" rel = 'stylesheet' type="text/css"/>
+    <!--开关插件-->
+    <link href="{{url_for('static',filename = 'plugins/uniform/css/uniform.default.css')}}" rel = 'stylesheet' type="text/css"/>
+    <!--表格插件-->
+    <link href="{{url_for('static',filename = 'global/css/bootstrap-switch.min.css')}}" rel = 'stylesheet' type="text/css"/>
+    <!-- END GLOBAL MANDATORY STYLES -->
+
+    <!-- BEGIN THEME GLOBAL STYLES -->
+    <!-- select插件-->
+    <link href="{{url_for('static',filename = 'plugins/select2/css/select2.min.css')}}" rel = 'stylesheet' type="text/css"/>
+    <link href="{{url_for('static',filename = 'plugins/select2/css/select2-bootstrap.min.css')}}" rel = 'stylesheet' type="text/css"/>
+    <!-- metronic 核心文件 -->
+    <link href="{{url_for('static',filename = 'global/css/components.min.css')}}" rel = 'stylesheet' id="style_components" type="text/css"/>
+    <link href="{{url_for('static',filename = 'global/css/plugins.min.css')}}" rel = 'stylesheet' type="text/css"/>
+    <!-- END THEME GLOBAL STYLES -->
+    <!-- BEGIN THEME LAYOUT STYLES -->
+    <!-- 自定义文件 -->
+    <link href="{{url_for('static',filename = 'layout/css/custom.min.css')}}" rel = 'stylesheet' type="text/css"/>
+    <link href="{{url_for('static',filename = 'layout/css/login.min.css')}}" rel="stylesheet" type="text/css" />
+    <link  href="{{url_for('static',filename = 'img/favicon.ico')}}" rel="shortcut icon"/>
+
+    <!--如果您的浏览器是ie9或者是ie9以下则会执行里面的代码-->
+    <!--[if lt IE 9]>
+<script src="{{url_for('static',filename = 'global/js/respond.min.js')}}"></script>
+<script src="{{url_for('static',filename = 'global/js/excanvas.min.js')}}"></script>
+
+<![endif]-->
+    <!-- BEGIN CORE PLUGINS -->
+    <script src="{{url_for('static',filename = 'global/js/jquery.min.js')}}" type="text/javascript"></script>
+    <script src="{{url_for('static',filename = 'global/js/bootstrap.min.js')}}" type="text/javascript"></script>
+    <!--前端对cookie的操作-->
+    <script src="{{url_for('static',filename = 'global/js/js.cookie.min.js')}}" type="text/javascript"></script>
+    <!-- 滚动条 -->
+    <script src="{{url_for('static',filename = 'global/js/jquery.slimscroll.min.js')}}" type="text/javascript"></script>
+    <!-- 加载等待效果 -->
+    <script src="{{url_for('static',filename = 'global/js/jquery.blockui.min.js')}}" type="text/javascript"></script>
+    <!-- 公共 -->
+    <script src="{{url_for('static',filename = 'global/js/bootstrap-hover-dropdown.min.js')}}" type="text/javascript"></script>
+
+    <script src="{{url_for('static',filename = 'plugins/uniform/jquery.uniform.min.js')}}" type="text/javascript"></script>
+
+    <script src="{{url_for('static',filename = 'global/js/bootstrap-switch.min.js')}}" type="text/javascript"></script>
+    <!-- sweetalert -->
+    <script src="{{url_for('static',filename = 'global/js/sweetalert.min.js')}}" type="text/javascript"></script>
+    <!-- END CORE PLUGINS -->
+
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <script src="{{url_for('static',filename = 'global/js/jquery.validate.min.js')}}" type="text/javascript"></script>
+    <script src="{{url_for('static',filename = 'global/js/additional-methods.min.js')}}" type="text/javascript"></script>
+    <script src="{{url_for('static',filename = 'plugins/select2/js/select2.full.min.js')}}" type="text/javascript"></script>
+    <script src="{{url_for('static',filename = 'global/js/jquery.backstretch.min.js')}}" type="text/javascript"></script>
+    <script src="{{url_for('static',filename = 'global/js/custom-compent.js')}}" type="text/javascript"></script>
+    <!-- END PAGE LEVEL PLUGINS -->
+
+    <!-- BEGIN PAGE LEVEL SCRIPTS -->
+    <script src="{{url_for('static',filename = 'global/js/app.min.js')}}" type="text/javascript"></script>
+    <!-- END PAGE LEVEL SCRIPTS -->
+    <!-- END PAGE LEVEL SCRIPTS -->
+    <!-- BEGIN THEME LAYOUT SCRIPTS -->
+    <script src="{{url_for('static',filename = 'layout/js/login.min.js')}}" type="text/javascript"></script>
+    <!-- END THEME LAYOUT SCRIPTS -->
+</head>
+
+<body class="login">
+    <div class="logo">
+        <a>
+            <img src="{{url_for('static',filename = 'img/logo.png')}}" alt="" /> </a>
+    </div>
+    <div class="content">
+
+        <form class="login-form" action="{{url_for('home.login')}}" method="post">
+            <h3 class="form-title">登录你的账号</h3>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+
+            <div class="alert alert-danger">
+                <button class="close" data-close="alert"></button>
+                    {% for message in messages %}
+                    <span> {{ message }} </span>
+                    {% endfor %}
+            </div>
+                {% endif %}
+            {% endwith %}
+
+            {{form.hidden_tag()}}
+            <div class="form-group">
+                <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+                {% if form.username.errors %}
+                    {% for e in form.username.errors %}
+                        <p class="flashes">{{ e }}</p>
+                    {% endfor %}
+                {% endif %}
+
+                <div class="input-icon">
+                    <i class="fa fa-user"></i>
+                    {{ form.username(class='form-control placeholder-no-fix')}}
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="input-icon">
+                    <i class="fa fa-lock"></i>
+                    {{ form.password(class='form-control placeholder-no-fix')}}
+                    <!-- input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="password" /-->
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <label class="checkbox">
+                    <input type="checkbox" name="remember" value="1" /> 记住我
+                </label>
+                <button type="submit" class="btn green pull-right">  登录 </button>
+            </div>
+            <div class="create-account">
+                <p> 钉钉
+                    <a href="javascript:;" id="register-btn"> 二维码登录 </a>
+                </p>
+            </div>
+        </form>
+
+    </div>
+</body>
+
+</html>

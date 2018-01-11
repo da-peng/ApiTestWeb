@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="page-content">
+        <!-- BEGIN PAGE BREADCRUMB -->
+        <ul class="page-breadcrumb breadcrumb">
+            <li>
+                <a href="{{ url_for('home.index')}}">Home</a>
+                <i class="fa fa-circle"></i>
+            </li>
+            <li>
+                <span class="active">统计</span>
+            </li>
+        </ul>
+        <div class="row margin-bottom-40 about-header">
+            <div class="col-md-12">
+                <h1>QA</h1>
+                <h2>接口测试平台</h2>
+            </div>
+        </div>
+
+       <!-- END PAGE BREADCRUMB -->
+    </div>
+
+{% endblock %}
+
+{% block link %}
+    <link href="{{ url_for('static',filename = 'layout/css/about.min.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}

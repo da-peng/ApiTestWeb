@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+{% block sidebar%}
+            <!-- BEGIN SIDEBAR -->
+            <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+            <!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+            <div class="page-sidebar navbar-collapse collapse">
+                    <!-- BEGIN SIDEBAR MENU -->
+                    <!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
+                    <!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
+                    <!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
+                    <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+                    <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
+                    <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+                    <ul class="page-sidebar-menu" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+                        <li class="nav-item start">
+                            <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="icon-home"></i>
+                                <span class="title">测试管理</span>
+                                <span class="selected"></span>
+                                <span class="arrow open"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item start">
+                                    <a href="{{url_for('home.index')}}" class="nav-link ">
+                                        <i class="icon-bar-chart"></i>
+                                        <span class="title">仪表盘</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item start ">
+                                    <a href="{{url_for('home.interface')}}" class="nav-link ">
+                                        <i class="icon-bar-chart"></i>
+                                        <span class="title">接口列表</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item start ">
+                                    <a href="{{url_for('home.sql_statement')}}" class="nav-link ">
+                                        <i class="icon-graph"></i>
+                                        <span class="title">SQL查询语句列表</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item start ">
+                                    <a href="{{url_for('home.test_case')}}" class="nav-link ">
+                                        <i class="icon-graph"></i>
+                                        <span class="title">测试用例</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item start ">
+                                    <a href="{{url_for('home.test_suite')}}" class="nav-link ">
+                                        <i class="icon-graph"></i>
+                                        <span class="title">测试套件配置</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item start ">
+                                    <a href="{{url_for('home.task')}}" class="nav-link ">
+                                        <i class="icon-graph"></i>
+                                        <span class="title">定时任务配置</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="heading">
+                            <h3 class="uppercase">配置管理</h3>
+                        </li>
+
+                        <li class="nav-item active open ">
+                            <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="icon-diamond"></i>
+                                <span class="title">项目管理</span>
+                                <span class="arrow"></span>
+                            </a>
+                            <ul class="sub-menu active open">
+                                <li class="nav-item  ">
+                                    <a href="{{url_for('admin.project')}}" class="nav-link ">
+                                        <span class="title">项目&模块</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item ">
+                            <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="icon-diamond"></i>
+                                <span class="title">成员管理</span>
+                                <span class="arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item  ">
+                                    <a href="{{url_for('admin.user')}}" class="nav-link ">
+                                        <span class="title">成员&权限</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a href="{{url_for('admin.role')}}" class="nav-link ">
+                                        <span class="title">角色</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <!-- END SIDEBAR MENU -->
+                </div>
+            <!-- END SIDEBAR -->
+{% endblock %}
+{% block content %}
+    <!-- BEGIN CONTENT BODY -->
+    <div class="page-content">
+        <!-- BEGIN PAGE HEAD-->
+        <div class="page-head">
+        <!-- BEGIN PAGE TITLE -->
+            <div class="page-title">
+                <h1>测试管理
+                    <small>接口列表</small>
+                </h1>
+            </div>
+            <!-- END PAGE TITLE -->
+        </div>
+        <!-- END PAGE HEAD-->
+        <!-- BEGIN PAGE BREADCRUMB -->
+        <ul class="page-breadcrumb breadcrumb">
+            <li>
+                <a href="index.html">Home</a>
+                <i class="fa fa-circle"></i>
+            </li>
+            <li>
+                <span class="active">接口列表</span>
+            </li>
+        </ul>
+       <!-- END PAGE BREADCRUMB -->
+    </div>
+{% endblock %}
